@@ -1,80 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './products.css';
-import Item1 from '../Components/Images/img1.jfif'
-import Item2 from '../Components/Images/img2.jfif'
-import Item3 from '../Components/Images/img3.jfif'
-import Item4 from '../Components/Images/img4.jfif'
+
 
 const Products = ({ ProductItems,handleAddProduct}) => {
    return (
-    <>
-    <div className='row'>
-      <div className='col-md-3'>
-        <div class="card">
-  <img src={Item1} alt='cake1'/>
-  <div class="card-body">
-    <h5 class="card-title">Choco Fillers</h5>
-    <p class="card-text">Starts from Rs.1050</p>
-    <label>Quantity:</label>
-    <input type='number' id='size' placeholder='-1+ Kg'></input>
-   <br/>
+    <div className='products'>
+    {ProductItems.map((productItem) => (
+      <div className='product' key={productItem.id}>
+        <div>
+          <img
+            className='product-image'
+            src={productItem.image}
+            alt={productItem.name}
+          />
+          
+        </div>
+        <div className='product-details'>
+          <h2>{productItem.name}</h2>
+          <span>{productItem.Price}</span>
+        </div>
+        
+        <div className='addToCart'>
+        <button className='add-cart-items'
+        onClick={()=>handleAddProduct(productItem.id)}>Add To Cart</button>
+        
+      </div>
+  </div>
+      
+      ))}
+
+      
+</div>
+);
+}
+export default Products;
+
    
-   <button className='product-add' onClick={()=>handleAddProduct(ProductItems)}>Add To Cart</button>
-
-    </div>
-</div>
-</div>
-
-<div className='col-md-3'>
-<div class="card">
-  <img src={Item2} alt='cake1'/>
-  <div class="card-body">
-    <h5 class="card-title">Choco Fillers</h5>
-    <p class="card-text">Starts from Rs.1050</p>
-    <label>Quantity:</label>
-    <input type='number' id='size' placeholder='-1+ Kg'></input>
-   <br/>
    
-   <button className='product-add' onClick={()=>handleAddProduct(ProductItems)}>Add To Cart</button>
    
-</div>
-</div>
-</div>
-
-<div className='col-md-3'>
-<div class="card">
-  <img src={Item3} alt='cake1'/>
-  <div class="card-body">
-    <h5 class="card-title">Choco Fillers</h5>
-    <p class="card-text">Starts from Rs.1050</p>
-    <label>Quantity:</label>
-    <input type='number' id='size' placeholder='-1+ Kg'></input>
-   <br/>
    
-   <button className='product-add' onClick={()=>handleAddProduct(ProductItems)}>Add To Cart</button>
-
-    </div>
-</div>
-</div>
-
-<div className='col-md-3'>
-<div class="card">
-  <img src={Item4} alt='cake1'/>
-  <div class="card-body">
-    <h5 class="card-title">Choco Fillers</h5>
-    <p class="card-text">Starts from Rs.1050</p>
-    <label>Quantity:</label>
-    <input type='number' id='size' placeholder='-1+ Kg'></input>
-   <br/>
-   
-   <button className='product-add' onClick={()=>handleAddProduct(ProductItems)}>Add To Cart</button>
-
-    </div>
-</div>
- </div> 
- 
-  
- </div>
+    
 
 
 
